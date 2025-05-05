@@ -267,11 +267,12 @@ BEGIN
     -- Return the count
     RETURN @Count;
 END;
+GO
 
 SELECT FirstName, 
        LastName, 
        dbo.GetClassCount(MemberID) AS TotalClasses 
-FROM Member;
+FROM Members;
 
 CREATE PROCEDURE dbo.GetMemberInfo
     @MemberID INT
