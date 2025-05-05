@@ -175,12 +175,7 @@ GRANT SELECT ON dbo.Members TO USER_DB
 GRANT SELECT ON dbo.MembershipPlans TO USER_DB
 GRANT SELECT ON dbo.Trainers TO USER_DB
 GO
-
-CREATE DATABASE DB_FITNESS
-GO
-USE DB_FITNESS
-GO
-
+    
 ALTER TABLE Members
 ADD Username NVARCHAR(50), 
     Password NVARCHAR(100);
@@ -277,3 +272,22 @@ SELECT FirstName,
        LastName, 
        dbo.GetClassCount(MemberID) AS TotalClasses 
 FROM Member;
+
+CREATE PROCEDURE dbo.GetMemberInfo
+    @MemberID INT
+AS
+BEGIN
+    SELECT 
+        MemberID,
+        FirstName,
+        LastName,
+        Email,
+        PhoneNumber,
+        JoinDate,
+        MembershipType
+    FROM 
+        Members
+    WHERE 
+        MemberID = @MemberID;
+END;
+GO
