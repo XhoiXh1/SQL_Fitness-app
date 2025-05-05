@@ -264,7 +264,6 @@ BEGIN
     FROM Attendance 
     WHERE MemberID = @MemberID;
 
-    -- Return the count
     RETURN @Count;
 END;
 GO
